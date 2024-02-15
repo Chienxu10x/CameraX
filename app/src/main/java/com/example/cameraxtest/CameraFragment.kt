@@ -493,7 +493,6 @@ class CameraFragment : Fragment() {
         cameraUiContainerBinding?.seekbarContrast?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 val contrastValue = (progress + 10) / 10f
-//                camera?.cameraControl?.setZoomRatio(contrastValue)
                 camera?.cameraControl?.setExposureCompensationIndex(contrastValue.toInt())
             }
 
@@ -504,6 +503,24 @@ class CameraFragment : Fragment() {
             }
 
         })
+
+        cameraUiContainerBinding?.seekbarZoom?.progress = 0
+        cameraUiContainerBinding?.seekbarZoom?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                val contrastValue = (progress + 10) / 10f
+                camera?.cameraControl?.setZoomRatio(contrastValue)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
+
     }
 
     /** Bật hoặc tắt nút chuyển đổi camera tùy theo camera có sẵn */
